@@ -1,0 +1,8 @@
+C:\Users\acerpc\Desktop\Chat-API-NET-master\WhatsTest\bin\Debug\WhatsTest.exe.config
+C:\Users\acerpc\Desktop\Chat-API-NET-master\WhatsTest\bin\Debug\WhatsTest.exe
+C:\Users\acerpc\Desktop\Chat-API-NET-master\WhatsTest\bin\Debug\WhatsTest.pdb
+C:\Users\acerpc\Desktop\Chat-API-NET-master\WhatsTest\bin\Debug\WhatsAppApi.dll
+C:\Users\acerpc\Desktop\Chat-API-NET-master\WhatsTest\bin\Debug\WhatsAppApi.pdb
+C:\Users\acerpc\Desktop\Chat-API-NET-master\WhatsTest\obj\x86\Debug\WhatsTest.csprojResolveAssemblyReference.cache
+C:\Users\acerpc\Desktop\Chat-API-NET-master\WhatsTest\obj\x86\Debug\WhatsTest.exe
+C:\Users\acerpc\Desktop\Chat-API-NET-master\WhatsTest\obj\x86\Debug\WhatsTest.pdb

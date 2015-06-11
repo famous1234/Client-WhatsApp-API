@@ -16,6 +16,8 @@ namespace WhatsAppPort
         protected string phone;
         public string password;
 
+        
+
         public frmRegister(string number)
         {
             InitializeComponent();
@@ -28,7 +30,12 @@ namespace WhatsAppPort
             }
         }
 
-        private void btnCodeRequest_Click(object sender, EventArgs e)
+        public void btnCodeRequest_Click(object sender, EventArgs e)
+        {
+            ObtenerCodigo();
+        }
+
+        public void ObtenerCodigo()
         {
             if (!String.IsNullOrEmpty(this.txtPhoneNumber.Text))
             {
@@ -40,9 +47,9 @@ namespace WhatsAppPort
                 this.number = this.txtPhoneNumber.Text;
                 this.cc = this.number.Substring(0, 2);
                 this.phone = this.number.Substring(2);
-                if (WhatsAppApi.Register.WhatsRegisterV2.RequestCode(this.number, out this.password, method))
+                if (WhatsAppApi.Register.WhatsRegisterV2.RequestCode(this.number, out password, method))
                 {
-                    if (!string.IsNullOrEmpty(this.password))
+                    if (!string.IsNullOrEmpty(password))
                     {
                         //password received
                         this.OnReceivePassword();
@@ -56,13 +63,14 @@ namespace WhatsAppPort
             }
         }
 
+
         private void btnRegisterCode_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(this.txtCode.Text) && this.txtCode.Text.Length == 6)
             {
                 string code = this.txtCode.Text;
-                this.password = WhatsAppApi.Register.WhatsRegisterV2.RegisterCode(this.number, code);
-                if (!String.IsNullOrEmpty(this.password))
+                password = WhatsAppApi.Register.WhatsRegisterV2.RegisterCode(this.number, code);
+                if (!String.IsNullOrEmpty(password))
                 {
                     this.OnReceivePassword();
                 }
@@ -71,7 +79,7 @@ namespace WhatsAppPort
 
         private void OnReceivePassword()
         {
-            this.txtOutput.Text = String.Format("Found password:\r\n{0}\r\n\r\nWrite it down and exit the program", this.password);
+            this.txtOutput.Text = String.Format("Found password:\r\n{0}\r\n\r\nWrite it down and exit the program", password);
             this.grpStep1.Enabled = false;
             this.grpStep2.Enabled = false;
             this.grpResult.Enabled = true;
@@ -80,6 +88,16 @@ namespace WhatsAppPort
         private void btnDone_Click(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
+        }
+
+        public string getPassword()
+           {
+
+            return this.password; }
+
+        private void frmRegister_Load(object sender, EventArgs e)
+        {
+            txtPhoneNumber.Enabled = false;
         }
     }
 }

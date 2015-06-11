@@ -9,6 +9,11 @@ using System.Windows.Forms;
 
 using System.IO;
 using System.Data.OleDb;
+using DocumentFormat.OpenXml;
+using ClosedXML.Excel;
+
+
+
 
 namespace WhatsAppPort
 {
@@ -74,36 +79,43 @@ namespace WhatsAppPort
 
                         dataGridView1.DataSource = dt;
 
-                        /*
-
-                        List<KeyValuePair<String, String>> test = new List<KeyValuePair<string, string>>();
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            test.Add(new KeyValuePair<string, string>(dr[0].ToString(), (dr[1].ToString())));
-                        }
-
-                        foreach (var item in test)
-                        {
-
-                            var tmpUser = User.UserExists("57" + item.Value, item.Key);
-                            this.userList.Add(tmpUser.PhoneNumber, tmpUser);
-
-                            var tmpListUser = new ListViewItem(tmpUser.UserName);
-                            tmpListUser.Tag = tmpUser;
-                            this.listViewContacts.Items.Add(tmpListUser);
-                        }
-                        */
-
-
+                      
 
                     }
                 }
             }
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+
+            saveFileDialog1.ShowDialog();
+
+            
+
+
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            DataTable data = (DataTable)(dataGridView1.DataSource);
+
+            //Exporting to Excel
+            string folderPath = saveFileDialog1.FileName;
+            
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(data, "Contactos");
+                wb.SaveAs(folderPath + ".xlsx");
+            }
         }
     }
 }

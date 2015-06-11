@@ -12,6 +12,8 @@ namespace WhatsAppPort
         public string UserName { get; private set; }
         public WhatsUser WhatsUser { get; private set; }
 
+        public int count { get; set; }
+
         public User(string phone, string name)
         {
             this.PhoneNumber = phone;
@@ -32,6 +34,7 @@ namespace WhatsAppPort
             if (this.WhatsUser != null)
                 return;
 
+            count++;
             this.WhatsUser = user;
         }
 

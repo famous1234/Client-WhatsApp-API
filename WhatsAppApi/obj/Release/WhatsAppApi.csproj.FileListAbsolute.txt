@@ -4,3 +4,9 @@ C:\Users\acerpc\Desktop\Chat-API-NET-master\WhatsAppApi\obj\Release\WhatsAppApi.
 C:\Users\acerpc\Desktop\Chat-API-NET-master\WhatsAppApi\obj\Release\WhatsAppApi.csproj.GenerateResource.Cache
 C:\Users\acerpc\Desktop\Chat-API-NET-master\WhatsAppApi\obj\Release\WhatsAppApi.dll
 C:\Users\acerpc\Desktop\Chat-API-NET-master\WhatsAppApi\obj\Release\WhatsAppApi.pdb
+C:\Users\acerpc\Desktop\Chat-API-NET-master\Client-WhatsApp-API-C-\WhatsAppApi\bin\Release\WhatsAppApi.dll
+C:\Users\acerpc\Desktop\Chat-API-NET-master\Client-WhatsApp-API-C-\WhatsAppApi\bin\Release\WhatsAppApi.pdb
+C:\Users\acerpc\Desktop\Chat-API-NET-master\Client-WhatsApp-API-C-\WhatsAppApi\obj\Release\WhatsAppApi.Properties.Resources.resources
+C:\Users\acerpc\Desktop\Chat-API-NET-master\Client-WhatsApp-API-C-\WhatsAppApi\obj\Release\WhatsAppApi.csproj.GenerateResource.Cache
+C:\Users\acerpc\Desktop\Chat-API-NET-master\Client-WhatsApp-API-C-\WhatsAppApi\obj\Release\WhatsAppApi.dll
+C:\Users\acerpc\Desktop\Chat-API-NET-master\Client-WhatsApp-API-C-\WhatsAppApi\obj\Release\WhatsAppApi.pdb

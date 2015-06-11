@@ -20,6 +20,12 @@ namespace WhatsAppPort
         {
             this.Tag = richTextBox1.Text;
             this.Close();
+            Monitoreo.mensaje = richTextBox1.Text;
+        }
+
+        private void frmSetMessage_Load(object sender, EventArgs e)
+        {
+            this.richTextBox1.Text = Monitoreo.mensaje;
         }
     }
 }

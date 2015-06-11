@@ -34,6 +34,7 @@ namespace WhatsAppPort
             }
         }
 
+
         private bool CheckLogin(string user, string pass)
         {
             try
@@ -69,8 +70,18 @@ namespace WhatsAppPort
         private void frmLogin_Load(object sender, EventArgs e)
         {
             this.textBoxPhone.Text = "573107412582";
-            this.textBoxPass.Text = "C/SYlUebWI4vXBn8/kdfgotYR/I=";
+            this.textBoxPass.Text = "";
             this.textBoxNick.Text = "NeoWhatsApp";
+
+            frmRegister regForm = new frmRegister(this.textBoxPhone.Text);
+            regForm.ObtenerCodigo();
+            this.textBoxPass.Text = regForm.getPassword();
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

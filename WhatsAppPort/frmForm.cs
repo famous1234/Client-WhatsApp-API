@@ -14,8 +14,13 @@ using WhatsAppApi;
 using WhatsAppApi.Helper;
 using WhatsAppApi.Parser;
 
+
 using System.IO;
 using System.Data.OleDb;
+using System.Reflection;
+using ClosedXML.Excel;
+
+
 
 
 
@@ -33,6 +38,11 @@ namespace WhatsAppPort
         private string phoneNick;
 
         private string MSJ { get; set; }
+
+        List<KeyValuePair<String, String>> test = new List<KeyValuePair<string, string>>();
+
+        private int consta = 0;
+        private int incremento = 0;
 
         public frmForm(string num, string pass, string nick)
         {
@@ -75,6 +85,7 @@ namespace WhatsAppPort
             WhatSocket.Instance.Connect();
             WhatSocket.Instance.Login();
             this.bgWorker.RunWorkerAsync();
+            
         }
 
         private void ProcessMessages(object sender, DoWorkEventArgs args)
@@ -156,16 +167,28 @@ namespace WhatsAppPort
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int count = 0;
+            this.consta = Monitoreo.m_numero_contactos;
+            this.incremento = Monitoreo.m_numero_contactos;
+
+
 
             foreach (ListViewItem item in listViewContacts.Items) {
-               
+                count++;
+                Monitoreo.num_msj_eviados++;
                 var tmpUser = item.Tag as User;
                 var tmpDialog = new frmUserChat(tmpUser);
                 //tmpDialog.MessageRecievedEvent += new frmUserChat.ProtocolDelegate(tmpDialog_MessageRecievedEvent);
                 /*tmpDialog.Show();*/
                 tmpDialog.TrasferMsj(MSJ);
+                if(count == incremento) { EnviarMensaje(); incremento = this.consta + Monitoreo.num_msj_eviados; }
+
+                Thread.Sleep(Monitoreo.splee_por_mensaje);
             }
 
+            
+
+            Monitoreo.msj_realtime += "Todos los mensajes Enviados";
             /*
             var selItem = listViewContacts.Items[1];
             var tmpUser = selItem.Tag as User;
@@ -174,6 +197,9 @@ namespace WhatsAppPort
             tmpDialog.Show();
             tmpDialog.TrasferMsj("hello world");
              */
+
+
+
 
 
         }
@@ -240,7 +266,7 @@ namespace WhatsAppPort
                         con.Close();
 
 
-                        List<KeyValuePair<String, String>> test = new List<KeyValuePair<string, string>>();
+                       /* List<KeyValuePair<String, String>> test = new List<KeyValuePair<string, string>>();*/
                         foreach (DataRow dr in dt.Rows)
                         {
                             test.Add(new KeyValuePair<string, string>(dr[0].ToString(), (dr[1].ToString())));
@@ -318,6 +344,58 @@ namespace WhatsAppPort
         }
 
 
+
+        public void EnviarMensaje()
+        {
+            
+
+            DataTable table = new DataTable();
+            table.Columns.Add("usuario", typeof(string));
+            table.Columns.Add("numero", typeof(string));
+            table.Columns.Add("estado", typeof(string));
+
+            int count = 0;
+            foreach (var item in test) {
+                count++;
+                table.Rows.Add(item.Key,item.Value,"ok");
+                
+                if (count == Monitoreo.num_msj_eviados) { break;  }
+            }
+            
+
+
+
+            //Exporting to Excel
+            string folderPath = "C:\\Excel\\";
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(table, "Contactos");
+                wb.SaveAs(folderPath + "Contactos.xlsx");
+            }
+
+           
+            int num_start =  Monitoreo.num_msj_eviados - this.consta;
+            Monitoreo.msj_realtime += this.consta + " Mensajes enviados del "+num_start+ " al " + Monitoreo.num_msj_eviados+" a las " + DateTime.Now + "\n";
+
+            Thread.Sleep(Monitoreo.m_tiempo_por_envio);
+        }
+
+
+
+        private void listViewContacts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void parametrosDeEnvioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConfigure frm = new frmConfigure();
+            frm.ShowDialog();
+        }
     }
 
 

@@ -55,11 +55,11 @@
             // 
             // btnCodeRequest
             // 
-            this.btnCodeRequest.Location = new System.Drawing.Point(159, 45);
+            this.btnCodeRequest.Location = new System.Drawing.Point(136, 45);
             this.btnCodeRequest.Name = "btnCodeRequest";
-            this.btnCodeRequest.Size = new System.Drawing.Size(94, 23);
+            this.btnCodeRequest.Size = new System.Drawing.Size(117, 23);
             this.btnCodeRequest.TabIndex = 2;
-            this.btnCodeRequest.Text = "Request code";
+            this.btnCodeRequest.Text = "&Obtener Codigo";
             this.btnCodeRequest.UseVisualStyleBackColor = true;
             this.btnCodeRequest.Click += new System.EventHandler(this.btnCodeRequest_Click);
             // 
@@ -84,16 +84,16 @@
             this.grpStep1.Size = new System.Drawing.Size(259, 76);
             this.grpStep1.TabIndex = 4;
             this.grpStep1.TabStop = false;
-            this.grpStep1.Text = "Step 1: Request code";
+            this.grpStep1.Text = "Paso 1: Obtener Codigo";
             // 
             // radVoice
             // 
             this.radVoice.AutoSize = true;
             this.radVoice.Location = new System.Drawing.Point(64, 50);
             this.radVoice.Name = "radVoice";
-            this.radVoice.Size = new System.Drawing.Size(52, 17);
+            this.radVoice.Size = new System.Drawing.Size(43, 17);
             this.radVoice.TabIndex = 5;
-            this.radVoice.Text = "Voice";
+            this.radVoice.Text = "Voz";
             this.radVoice.UseVisualStyleBackColor = true;
             // 
             // radSMS
@@ -119,7 +119,7 @@
             this.grpStep2.Size = new System.Drawing.Size(259, 50);
             this.grpStep2.TabIndex = 5;
             this.grpStep2.TabStop = false;
-            this.grpStep2.Text = "Step 2: Confirm code";
+            this.grpStep2.Text = "Paso 2: Confirmar Codigo";
             // 
             // btnRegisterCode
             // 
@@ -127,7 +127,7 @@
             this.btnRegisterCode.Name = "btnRegisterCode";
             this.btnRegisterCode.Size = new System.Drawing.Size(94, 23);
             this.btnRegisterCode.TabIndex = 2;
-            this.btnRegisterCode.Text = "Confirm code";
+            this.btnRegisterCode.Text = "&Confirmar Codigo";
             this.btnRegisterCode.UseVisualStyleBackColor = true;
             this.btnRegisterCode.Click += new System.EventHandler(this.btnRegisterCode_Click);
             // 
@@ -144,9 +144,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Code";
+            this.label1.Text = "Codigo";
             // 
             // txtOutput
             // 
@@ -163,7 +163,7 @@
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(75, 23);
             this.btnDone.TabIndex = 6;
-            this.btnDone.Text = "Done";
+            this.btnDone.Text = "&Aceptar";
             this.btnDone.UseVisualStyleBackColor = true;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
@@ -177,7 +177,7 @@
             this.grpResult.Size = new System.Drawing.Size(259, 156);
             this.grpResult.TabIndex = 7;
             this.grpResult.TabStop = false;
-            this.grpResult.Text = "Step 3: Retrieve password";
+            this.grpResult.Text = "Paso 3: Obtener Token";
             // 
             // frmRegister
             // 
@@ -188,7 +188,8 @@
             this.Controls.Add(this.grpStep2);
             this.Controls.Add(this.grpStep1);
             this.Name = "frmRegister";
-            this.Text = "Register";
+            this.Text = "Registro";
+            this.Load += new System.EventHandler(this.frmRegister_Load);
             this.grpStep1.ResumeLayout(false);
             this.grpStep1.PerformLayout();
             this.grpStep2.ResumeLayout(false);
